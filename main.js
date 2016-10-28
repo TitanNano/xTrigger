@@ -25,8 +25,11 @@ app.post('/update', (request, response) => {
             notify({ 
                 chatId : message.chat.id,
                 message : `Welcome in the IFTTT Notificator (xTrigger Bot).
-                To receive Notifications use "https://xtrigger.herokuapp.com/notify/${message.chat.id}".`
+To receive Notifications use "https://xtrigger.herokuapp.com/notify/${message.chat.id}".`
             });
+
+            response.status(200);
+            response.end();
         }
     }
 });
@@ -57,7 +60,4 @@ const notify = function({ chatId, message }) {
     });
 
     requ.end(body);
-
-    response.status(200);
-    response.end();
 }

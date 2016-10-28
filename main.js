@@ -14,6 +14,8 @@ app.post('/notify/:id', (request, response) => {
         chatId : request.params.id,
         message: request.body.message
     });
+
+    response.status(200).end();
 });
 
 

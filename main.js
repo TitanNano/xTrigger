@@ -52,7 +52,7 @@ const notify = function({ chatId, message }) {
     });
 
     let body = JSON.stringify({
-        chat_id: chatId
+        chat_id: chatId,
         text: message,
     });
 

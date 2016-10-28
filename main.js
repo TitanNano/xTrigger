@@ -3,9 +3,9 @@ const https = require('https');
 const bodyParser = require('body-parser');
 
 const app = express();
-const telegramBotKey = '130912325:AAFe4ScQmexY1PIem-Oy2r3coaKdHEn3Mk4';
+const telegramBotKey = process.env.TELEGRAM_BOT_KEY;
 
-app.listen('8080');
+app.listen(process.env.PORT);
 
 app.use(bodyParser.json());
 

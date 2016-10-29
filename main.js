@@ -12,7 +12,8 @@ app.use(bodyParser.json());
 app.post('/notify/:id', (request, response) => {
     notify({
         chatId : request.params.id,
-        message: request.body.message
+        message: request.body.message,
+        type: request.body.type,
     });
 
     response.status(200).end();
@@ -36,7 +37,7 @@ To receive Notifications use "https://xtrigger.herokuapp.com/notify/${message.ch
     }
 });
 
-const notify = function({ chatId, message }) {
+const notify = function({ chatId, message, type }) {
     let requ = https.request({
         protocol: 'https:',
         hostname: 'api.telegram.org',
@@ -59,6 +60,7 @@ const notify = function({ chatId, message }) {
     let body = JSON.stringify({
         chat_id: chatId,
         text: message,
+        parse_mode: type,
     });
 
     requ.end(body);
